@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F243C6E81FF26E6E00C45167 /* secret.wav in Resources */ = {isa = PBXBuildFile; fileRef = F243C6E71FF26E6E00C45167 /* secret.wav */; };
 		F2D72FC71FF261000069761E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D72FC61FF261000069761E /* AppDelegate.swift */; };
-		F2D72FC91FF261000069761E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D72FC81FF261000069761E /* ViewController.swift */; };
+		F2D72FC91FF261000069761E /* mainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D72FC81FF261000069761E /* mainVC.swift */; };
 		F2D72FCC1FF261000069761E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2D72FCA1FF261000069761E /* Main.storyboard */; };
 		F2D72FCE1FF261000069761E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2D72FCD1FF261000069761E /* Assets.xcassets */; };
 		F2D72FD11FF261000069761E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2D72FCF1FF261000069761E /* LaunchScreen.storyboard */; };
 		F2D72FDC1FF261000069761E /* speechRecTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D72FDB1FF261000069761E /* speechRecTests.swift */; };
+		F2D72FEA1FF2645B0069761E /* circleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D72FE91FF2645B0069761E /* circleButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,9 +28,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F243C6E71FF26E6E00C45167 /* secret.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = secret.wav; sourceTree = "<group>"; };
 		F2D72FC31FF261000069761E /* speechRec.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = speechRec.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2D72FC61FF261000069761E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F2D72FC81FF261000069761E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F2D72FC81FF261000069761E /* mainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainVC.swift; sourceTree = "<group>"; };
 		F2D72FCB1FF261000069761E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F2D72FCD1FF261000069761E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F2D72FD01FF261000069761E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +39,7 @@
 		F2D72FD71FF261000069761E /* speechRecTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = speechRecTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2D72FDB1FF261000069761E /* speechRecTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = speechRecTests.swift; sourceTree = "<group>"; };
 		F2D72FDD1FF261000069761E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2D72FE91FF2645B0069761E /* circleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = circleButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F243C6E61FF26E5A00C45167 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F243C6E71FF26E6E00C45167 /* secret.wav */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		F2D72FBA1FF261000069761E = {
 			isa = PBXGroup;
 			children = (
@@ -77,8 +89,11 @@
 		F2D72FC51FF261000069761E /* speechRec */ = {
 			isa = PBXGroup;
 			children = (
+				F2D72FE61FF263FE0069761E /* Model */,
+				F2D72FE71FF264070069761E /* View */,
+				F2D72FE81FF264100069761E /* Controller */,
+				F243C6E61FF26E5A00C45167 /* Resources */,
 				F2D72FC61FF261000069761E /* AppDelegate.swift */,
-				F2D72FC81FF261000069761E /* ViewController.swift */,
 				F2D72FCA1FF261000069761E /* Main.storyboard */,
 				F2D72FCD1FF261000069761E /* Assets.xcassets */,
 				F2D72FCF1FF261000069761E /* LaunchScreen.storyboard */,
@@ -94,6 +109,29 @@
 				F2D72FDD1FF261000069761E /* Info.plist */,
 			);
 			path = speechRecTests;
+			sourceTree = "<group>";
+		};
+		F2D72FE61FF263FE0069761E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F2D72FE71FF264070069761E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F2D72FE91FF2645B0069761E /* circleButton.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F2D72FE81FF264100069761E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F2D72FC81FF261000069761E /* mainVC.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,6 +217,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F243C6E81FF26E6E00C45167 /* secret.wav in Resources */,
 				F2D72FD11FF261000069761E /* LaunchScreen.storyboard in Resources */,
 				F2D72FCE1FF261000069761E /* Assets.xcassets in Resources */,
 				F2D72FCC1FF261000069761E /* Main.storyboard in Resources */,
@@ -199,7 +238,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2D72FC91FF261000069761E /* ViewController.swift in Sources */,
+				F2D72FEA1FF2645B0069761E /* circleButton.swift in Sources */,
+				F2D72FC91FF261000069761E /* mainVC.swift in Sources */,
 				F2D72FC71FF261000069761E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
