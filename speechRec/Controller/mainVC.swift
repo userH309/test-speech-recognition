@@ -1,61 +1,54 @@
 import UIKit
 import Speech
-import AVFoundation
 
-class mainVC: UIViewController,AVAudioPlayerDelegate
-{
+class mainVC: UIViewController,AVAudioPlayerDelegate {
+    
     var audioPlayer: AVAudioPlayer!
+    
     @IBOutlet weak var acitivitySpinner: UIActivityIndicatorView!
     @IBOutlet weak var transcriptionTextField: UITextView!
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         acitivitySpinner.isHidden = true
     }
     
-    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) //run when audio player has finished
-    {
+    //Stop the activitySpinner animation and player when the audio player finish.
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         player.stop()
         acitivitySpinner.stopAnimating()
         acitivitySpinner.isHidden = true
     }
     
-    func requestSpeechAuth()
-    {
-        
-        SFSpeechRecognizer.requestAuthorization //ask for permission to use speech
-        {
-            authStatus in
+    func speechToTextConverter() {
+        //Ask for permission to use speech recognizer.
+        SFSpeechRecognizer.requestAuthorization { authStatus in
             
-            if authStatus == SFSpeechRecognizerAuthorizationStatus.authorized //if user has granted permission
-            {
-                if let path = Bundle.main.url(forResource: "secret", withExtension: "wav") //get the path for the file
-                {
-                    do
-                    {
-                        let sound = try AVAudioPlayer(contentsOf: path) //try the audioplayer
+            if authStatus == .authorized {
+                //Store the path for the internal resource sound file if it exists.
+                if let path = Bundle.main.url(forResource: "secret", withExtension: "wav") {
+                    //Try do play file, catch error if it fails.
+                    do {
+                        let sound = try AVAudioPlayer(contentsOf: path)
                         self.audioPlayer = sound
                         self.audioPlayer.delegate = self
-                        self.audioPlayer.play() //play the sound
+                        self.audioPlayer.play()
                     }
-                    catch //catch error
-                    {
-                        print("Error")
+                    catch {
+                        print("ERROR: Failed to play file.")
                     }
                     let recognizer = SFSpeechRecognizer()
-                    let request = SFSpeechURLRecognitionRequest(url: path) //request to recognize speech in the recorded audio file
-                    recognizer?.recognitionTask(with: request) //set up the speech recognition task
-                    {
+                    //Request to recognize speech in the file.
+                    let request = SFSpeechURLRecognitionRequest(url: path)
+                    //Set up the speech recognition.
+                    recognizer?.recognitionTask(with: request) {
                         (result,error) in
-                        if let error = error //catch error
-                        {
+                        if let error = error {
                             print("There was an error \(error)")
                         }
-                        else
-                        {
-                            print(result!.bestTranscription.formattedString) //print the result of the audio/text operation to the console
-                            self.transcriptionTextField.text = (result!.bestTranscription.formattedString) //print the result of the audio/text operation to textfield
+                        else {
+                            //Print the result of the speech rec to text field.
+                            self.transcriptionTextField.text = (result!.bestTranscription.formattedString)
                         }
                     }
                 }
@@ -63,11 +56,11 @@ class mainVC: UIViewController,AVAudioPlayerDelegate
         }
     }
     
-    @IBAction func playAndTransBtnPressed(_ sender: UIButton)
-    {
+    //Start activity spinner and run speechToTextConverter.
+    @IBAction func playAndTransBtnPressed(_ sender: UIButton) {
         acitivitySpinner.isHidden = false
         acitivitySpinner.startAnimating()
-        requestSpeechAuth()
+        speechToTextConverter()
     }
 }
 
